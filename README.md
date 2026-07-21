@@ -47,11 +47,17 @@ It was built as part of an internship project to showcase practical skills in **
 
 ## 🖼️ Screenshots
 
-> Add your own screenshots/GIFs here once deployed — this section sells the project at a glance.
 
-| Home (Light) | Home (Dark) | Hourly & Charts |
-|---|---|---|
-| ![screenshot-1](docs/screenshot-home-light.png) | ![screenshot-2](docs/screenshot-home-dark.png) | ![screenshot-3](docs/screenshot-charts.png) |
+## 📸 Project Gallery
+| ☀️ Home Dashboard (Light) | 🌙 Home Dashboard (Dark) |
+|:-------------------------:|:------------------------:|
+| ![](screenshots/home_Dashboard_light.png) | ![](screenshots/home_Dashboard_dark.png) |
+
+| 🌦️ Weather Forecast | 🌅 Sun Path & Radar |
+|:-------------------:|:-------------------:|
+| ![](screenshots/weather_forecast.png) | ![](screenshots/sunpath_and_precipitation_Radar.png) |
+
+---
 
 ---
 
