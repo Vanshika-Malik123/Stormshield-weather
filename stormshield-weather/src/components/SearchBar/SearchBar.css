@@ -1,0 +1,118 @@
+.searchbar {
+  position: relative;
+  width: 100%;
+}
+
+.searchbar__field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 46px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+.searchbar__field input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.searchbar__field input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.searchbar__icon {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.searchbar__clear,
+.searchbar__locate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.searchbar__clear:hover,
+.searchbar__locate:hover {
+  background: var(--glass-bg-strong);
+  color: var(--text-primary);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.searchbar__dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  z-index: 60;
+}
+
+.searchbar__status {
+  padding: var(--space-3);
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.searchbar__status--error {
+  color: var(--danger);
+}
+
+.searchbar__section-label {
+  padding: var(--space-2) var(--space-3) var(--space-1);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+}
+
+.searchbar__result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.searchbar__result svg {
+  color: var(--accent-soft);
+  flex-shrink: 0;
+}
+
+.searchbar__result:hover {
+  background: var(--glass-bg-strong);
+}
+
+.searchbar--compact .searchbar__field {
+  height: 42px;
+}
+
+@media (max-width: 900px) {
+  .searchbar--compact { display: none; }
+}

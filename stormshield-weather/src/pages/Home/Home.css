@@ -1,0 +1,44 @@
+.home__hero-search {
+  display: none;
+  margin-bottom: var(--space-5);
+}
+
+.home__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.home__grid + .wear-advisor {
+  margin-top: var(--space-5);
+}
+
+.wear-advisor + .highlights-grid {
+  margin-top: var(--space-5);
+}
+
+.home__secondary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 860px) {
+  .home__secondary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home__favorites {
+  margin-top: var(--space-6);
+}
+
+.home__section-title {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 900px) {
+  .home__hero-search { display: block; }
+}

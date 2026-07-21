@@ -1,0 +1,45 @@
+.hourly {
+  padding: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.hourly__title {
+  font-size: 1.05rem;
+  margin-bottom: var(--space-4);
+  color: var(--text-secondary);
+}
+
+.hourly__row {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  scroll-snap-type: x proximity;
+}
+
+.hourly__row::-webkit-scrollbar { height: 6px; }
+
+.hourly__item {
+  flex: 0 0 auto;
+  width: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  scroll-snap-align: start;
+}
+
+.hourly__time {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.hourly__temp {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.hourly__pop {
+  font-size: 0.7rem;
+  color: var(--accent-soft);
+}

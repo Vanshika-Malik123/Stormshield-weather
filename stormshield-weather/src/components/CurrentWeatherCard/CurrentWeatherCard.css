@@ -1,0 +1,99 @@
+.current-card {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.current-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.current-card__location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+}
+
+.current-card__location svg {
+  font-size: 1.2rem;
+  margin-top: 4px;
+  color: var(--accent-soft);
+}
+
+.current-card__location h1 {
+  font-size: 1.8rem;
+}
+
+.current-card__location p {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.current-card__fav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  transition: transform 0.25s var(--ease-out), color 0.25s, background 0.25s;
+}
+
+.current-card__fav:hover {
+  transform: scale(1.08);
+}
+
+.current-card__fav.is-active {
+  color: var(--danger);
+  background: rgba(241, 106, 106, 0.14);
+}
+
+.current-card__date {
+  color: var(--text-tertiary);
+  font-size: 0.82rem;
+}
+
+.current-card__main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-top: var(--space-3);
+}
+
+.current-card__temp {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-card__temp-value {
+  font-family: var(--font-display);
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.current-card__temp-label {
+  margin-top: var(--space-2);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+.current-card__feels {
+  margin-top: var(--space-1);
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 560px) {
+  .current-card__main { gap: var(--space-3); }
+  .current-card__temp-value { font-size: 3.2rem; }
+}

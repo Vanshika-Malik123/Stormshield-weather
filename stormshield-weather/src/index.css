@@ -1,0 +1,218 @@
+/* ===========================================================
+   StormShield — Design Tokens
+   Palette: night indigo base, aurora-violet + sky-cyan accents,
+   amber for warm/sunny states. Glass panels sit on an animated
+   sky canvas that is the signature element of the whole app.
+   =========================================================== */
+
+:root {
+  /* Core palette */
+  --sky-night-950: #070B18;
+  --sky-night-900: #0B1226;
+  --sky-night-800: #121B36;
+  --sky-blue-700: #1B2A52;
+  --aurora-violet: #7C6FF0;
+  --aurora-violet-soft: #A79BFF;
+  --sky-cyan: #57C2E8;
+  --sun-amber: #F5A15C;
+  --sun-amber-soft: #FFC98B;
+  --frost-white: #F4F8FF;
+
+  /* Semantic (dark mode default) */
+  --bg-app: var(--sky-night-950);
+  --text-primary: #F4F8FF;
+  --text-secondary: rgba(244, 248, 255, 0.64);
+  --text-tertiary: rgba(244, 248, 255, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-strong: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 8px 32px rgba(4, 8, 20, 0.45);
+  --accent: var(--mood-accent);
+  --accent-soft: var(--mood-accent-soft);
+  --danger: #F16A6A;
+  --success: #6ED0A0;
+
+  /* Weather-reactive accent — reassigned per-mood on :root (see
+     useMoodAccent hook). Everything that used to hardcode aurora-violet
+     for interactive UI (buttons, active nav, highlight icons) should
+     read --mood-accent instead, so the whole UI tints with the sky. */
+  --mood-accent: var(--aurora-violet);
+  --mood-accent-soft: var(--aurora-violet-soft);
+
+  --grain-opacity: 0.05;
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', monospace;
+
+  /* Radii / spacing */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --nav-height: 76px;
+}
+
+[data-theme='light'] {
+  --bg-app: #E9F1FB;
+  --text-primary: #101A33;
+  --text-secondary: rgba(16, 26, 51, 0.64);
+  --text-tertiary: rgba(16, 26, 51, 0.42);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(16, 26, 51, 0.1);
+  --glass-shadow: 0 8px 32px rgba(60, 90, 140, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+}
+[data-theme='light'] {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.5s var(--ease-out), color 0.5s var(--ease-out);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+button, input {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 111, 240, 0.4);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Glass panel utility */
+.glass {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border-radius: var(--radius-lg);
+  isolation: isolate;
+}
+
+/* Grain overlay — a faint fractal-noise texture is what separates a
+   real frosted-glass panel from a flat blur(). Applied via ::before so
+   it never interferes with child content or hover transforms. */
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.glass > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.01em;
+}
+
+.page-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + var(--space-6)) var(--space-5) var(--space-8);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    padding: calc(var(--nav-height) + var(--space-4)) var(--space-4) var(--space-7);
+  }
+}
