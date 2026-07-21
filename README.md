@@ -12,7 +12,7 @@ Search any city on Earth and get live conditions, hourly & 7-day forecasts, air 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 
-[Live Demo](stormshield-weather.vercel.app)
+[Live Demo]  (stormshield-weather.vercel.app)
 
 </div>
 
